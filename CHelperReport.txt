@@ -1,3 +1,3 @@
-68 src/CHelper/src/Solution/Project Euler #1- Multiples of 3 and 5.task
+61 src/CHelper/src/Solution/Project Euler #7- 10001st prime.task
 1
 0

@@ -3,12 +3,14 @@ package %package%;
 import %InputClassFQN%;
 import %OutputClassFQN%;
 import java.util.*;
+import java.util.concurrent.atomic.LongAdder;
+import net.egork.chelper.util.InputReader;
 
 public class %TaskClass% {
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
         
     }
-    
+
     private int in(int[] nums, int target){ for (int i=0; i<nums.length; i++) if(nums[i]==target) return i; return -1; }
     private int in(long[] nums, long target){ for (int i=0; i<nums.length; i++) if(nums[i]==target) return i; return -1; }
     private int in(char[] nums, char target){ for (int i=0; i<nums.length; i++) if(nums[i]==target) return i; return -1; }

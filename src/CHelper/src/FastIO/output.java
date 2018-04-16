@@ -27,49 +27,49 @@ public class output {
         writer.println();
     }
 
-    public void printArray(int[] array){
+    public void print(int[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printArray(char[] array){
+    public void print(char[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printArray(long[] array){
+    public void print(long[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printArray(float[] array){
+    public void print(float[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printArray(double[] array){
+    public void print(double[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printArray(String[] array){
+    public void print(String[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
         }
         println();
     }
 
-    public void printMatrix(int[][] array){
+    public void print(int[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[0].length; j++) {
                 print(array[i][j] + " ");
@@ -79,7 +79,7 @@ public class output {
         println();
     }
 
-    public void printMatrix(char[][] array){
+    public void print(char[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[i].length; j++) {
                 print(array[i][j]+" ");
@@ -89,7 +89,7 @@ public class output {
         println();
     }
 
-    public void printMatrix(long[][] array){
+    public void print(long[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[i].length; j++) {
                 print(array[i][j]+" ");
@@ -99,7 +99,7 @@ public class output {
         println();
     }
 
-    public void printMatrix(float[][] array){
+    public void print(float[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[i].length; j++) {
                 print(array[i][j]+" ");
@@ -109,7 +109,7 @@ public class output {
         println();
     }
 
-    public void printMatrix(double[][] array){
+    public void print(double[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[i].length; j++) {
                 print(array[i][j]+" ");
@@ -119,7 +119,7 @@ public class output {
         println();
     }
 
-    public void printMatrix(String[][] array){
+    public void print(String[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[i].length; j++) {
                 print(array[i][j]+" ");

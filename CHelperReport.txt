@@ -1,2 +1,3 @@
-40 src/CHelper/src/Solution/Short Name.task
+54 src/CHelper/src/Solution/Weighted Uniform Strings.task
+1
 0

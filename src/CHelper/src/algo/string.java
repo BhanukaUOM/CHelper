@@ -1,5 +1,7 @@
 package CHelper.src.algo;
 
+import java.util.HashMap;
+
 public class string {
     public static int LongestSubstringWithoutRepeatingCharacters(String s) {
         if (s.length() == 0) {
@@ -23,5 +25,35 @@ public class string {
             }
         }
         return Math.max(maxLen, len);
+    }
+
+    public static HashMap<String, Integer> counter(String[] arr)
+    {
+        HashMap<String, Integer> counter = new HashMap<>();
+
+        for (String a : arr) {
+            if (counter.containsKey(a)) {
+                int oldValue = counter.get(a);
+                counter.put(a, oldValue + 1);
+            } else {
+                counter.put(a, 1);
+            }
+        }
+        return counter;
+    }
+
+    public static HashMap<Character, Integer> counter(char[] arr)
+    {
+        HashMap<Character, Integer> counter = new HashMap<>();
+
+        for (char a : arr) {
+            if (counter.containsKey(a)) {
+                int oldValue = counter.get(a);
+                counter.put(a, oldValue + 1);
+            } else {
+                counter.put(a, 1);
+            }
+        }
+        return counter;
     }
 }

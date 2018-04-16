@@ -1,3 +1,2 @@
-61 src/CHelper/src/Solution/Project Euler #7- 10001st prime.task
-1
+40 src/CHelper/src/Solution/Short Name.task
 0

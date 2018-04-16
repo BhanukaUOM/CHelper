@@ -46,6 +46,19 @@ public class input
         return new String(buf, 0, cnt);
     }
 
+    public String nextLine(int maxLength)
+    {
+        byte[] buf = new byte[maxLength]; // line length
+        int cnt = 0, c;
+        while ((c = read()) != -1)
+        {
+            if (c == '\n')
+                break;
+            buf[cnt++] = (byte) c;
+        }
+        return new String(buf, 0, cnt);
+    }
+
     public int nextInt()
     {
         int ret = 0;

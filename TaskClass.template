@@ -5,6 +5,9 @@ import %OutputClassFQN%;
 import java.util.*;
 import java.util.concurrent.atomic.LongAdder;
 import net.egork.chelper.util.InputReader;
+import java.math.*;
+import java.text.*;
+import CHelper.src.algo.*;
 
 public class %TaskClass% {
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {

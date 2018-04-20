@@ -8,6 +8,7 @@ import net.egork.chelper.util.InputReader;
 import java.math.*;
 import java.text.*;
 import CHelper.src.algo.*;
+import CHelper.src.algs.*;
 
 public class %TaskClass% {
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
@@ -57,10 +58,24 @@ public class %TaskClass% {
     private long toLong(float num){ return (long)num;}
     private long toLong(double num){ return (long)num;}
     private String toString(int num){ return Integer.toString(num);}
+    private String toString(char ch){ return Character.toString(ch);}
     private String toString(long num){ return Long.toString(num);}
     private String toString(double num){ return Double.toString(num);}
     private String toString(float num){ return Float.toString(num);}
-    private long abs(long num){return Math.abs(num);}
-    private float abs(float num){return Math.abs(num);}
-    private double abs(double num){return Math.abs(num);}
+    private int abs(int num){if(num<0) return -num; return num;};
+    private long abs(long num){if(num<0) return -num; return num;}
+    private float abs(float x){if (x < 0.0) return -x; return  x;}
+    private double abs(double x){if (x < 0.0) return -x; return  x;}
+    private float avg(int[] a){ int N = a.length; int sum = 0; for (int i = 0; i < N; i++) sum += a[i];  return (float)sum/N;}
+    private float avg(long[] a){ int N = a.length; long sum = 0; for (int i = 0; i < N; i++) sum += a[i];  return (float)sum/N;}
+    private float avg(float[] a){ int N = a.length; float sum = 0.0f; for (int i = 0; i < N; i++) sum += a[i];  return sum/N;}
+    private double avg(double[] a){ int N = a.length; double sum = 0.0; for (int i = 0; i < N; i++) sum += a[i];  return sum/N;}
+    private int[] reverse(int[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   int temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private long[] reverse(long[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   long temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private float[] reverse(float[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   float temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private double[] reverse(double[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   double temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private char[] reverse(char[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   char temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private String[] reverse(String[] a){ int N = a.length; for (int i = 0; i < N/2; i++) {   String temp = a[i];   a[i] = a[N-1-i];   a[N-i-1] = temp; } return a;}
+    private double sqrt(double num){ return Math.sqrt(num);}
+    private double pow(double base, double exp) { return Math.pow(base,exp); };
 }

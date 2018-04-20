@@ -33,30 +33,28 @@ public class input
         bufferPointer = bytesRead = 0;
     }
 
-    public String nextLine()
+    public String next()
     {
-        byte[] buf = new byte[64]; // line length
-        int cnt = 0, c;
-        while ((c = read()) != -1)
+        StringBuilder str = new StringBuilder();
+        byte c;
+        while ((c = read()) != '\n' && c!=' ' && c!='\t' && c!='\r' && c!=-1)
         {
-            if (c == '\n')
-                break;
-            buf[cnt++] = (byte) c;
+            str.append((char)c);
         }
-        return new String(buf, 0, cnt);
+        return str.toString();
     }
 
-    public String nextLine(int maxLength)
+    public String nextLine()
     {
-        byte[] buf = new byte[maxLength]; // line length
-        int cnt = 0, c;
+        StringBuilder str = new StringBuilder();
+        byte c;
         while ((c = read()) != -1)
         {
             if (c == '\n')
                 break;
-            buf[cnt++] = (byte) c;
+            str.append((char)c);
         }
-        return new String(buf, 0, cnt);
+        return str.toString();
     }
 
     public int nextInt()

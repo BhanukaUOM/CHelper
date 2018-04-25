@@ -4,8 +4,23 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class string {
+
+    public static StringBuilder replaceAll(StringBuilder string, String pattern, String replace){
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(string);
+        return new StringBuilder(m.replaceAll(replace));
+    }
+
+    public static String replaceAll(String string, String pattern, String replace){
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(string);
+        return m.replaceAll(replace);
+    }
+
     public static boolean isPalindrome(String s) {
         int N = s.length();
         for (int i = 0; i < N/2; i++)

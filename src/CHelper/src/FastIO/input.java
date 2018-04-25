@@ -44,6 +44,16 @@ public class input
         return str.toString();
     }
 
+
+    public int hasNext() {
+        try {
+            return din.available();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public String nextLine()
     {
         StringBuilder str = new StringBuilder();

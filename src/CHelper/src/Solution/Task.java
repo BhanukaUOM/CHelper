@@ -12,9 +12,11 @@ import java.text.*;
 import CHelper.src.algo.*;
 import CHelper.src.algs.*;
 
-public class Task {
-    public void solve(int testNumber, input in, output out){
+import static sun.nio.ch.IOStatus.EOF;
 
+public class Task {
+    public void solve(int testNumber, input inp, output out) {
+        out.println(math.factorial(6));
     }
 
     private int in(int[] nums, int target){ for (int i=0; i<nums.length; i++) if(nums[i]==target) return i; return -1; }

@@ -54,6 +54,10 @@ public class input
         return -1;
     }
 
+    public char nextChar(){
+        return (char) read();
+    }
+
     public String nextLine()
     {
         StringBuilder str = new StringBuilder();

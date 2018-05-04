@@ -118,6 +118,27 @@ public class math {
 
     //You are given two integers start and end. Count how many numbers in the interval [A, B] have an odd number of divisors.
     public static int oddDivisorCountInRange(int start, int end){
+        //return (int)Math.sqrt(end) - (int)Math.sqrt(start-1);
+        int count = 0;
+        for(int i=start; i<=end; i++)
+            if(isPerfectSquare(i))
+                count++;
+        return count;
+    }
+
+    public static int perfectSquresInRange(int start, int end){
         return (int)Math.sqrt(end) - (int)Math.sqrt(start-1);
+    }
+
+    public static boolean isPerfectSquare(int n)
+    {
+        int sum = 0;
+        for(int i=1; sum < n; i += 2)
+        {
+            sum += i;
+            if (sum == n)
+                return true;
+        }
+        return false;
     }
 }

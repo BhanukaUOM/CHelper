@@ -180,6 +180,14 @@ public class input
         return ret;
     }
 
+    public String[] nextStringArray(int size) {
+        String[] ret = new String[size];
+        for (int i = 0; i < size; i++) {
+            ret[i] = next();
+        }
+        return ret;
+    }
+
     public int[][] nextIntMatrix(int n, int m) {
         int[][] ret = new int[n][m];
         for (int i = 0; i < n; i++) {

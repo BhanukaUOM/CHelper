@@ -1,13 +1,55 @@
 package CHelper.src.algo;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class string {
+
+    public static String sortString(String inputString){
+        char tempArray[] = inputString.toCharArray();
+        Arrays.sort(tempArray);
+        return new String(tempArray);
+    }
+
+    public static int[] counterAlpha(String str){
+        int[] c = new int[26];
+        for(char i : str.toCharArray()){
+            c[i - 'a']++;
+        }
+        return c;
+    }
+
+    public static int[] counterNum(String str){
+        int[] c = new int[10];
+        for(char i : str.toCharArray()){
+            c[i-'0']++;
+        }
+        return c;
+    }
+
+    /*public static String sort(String inputString){
+        Character tempArray[] = new Character[inputString.length()];
+        for (int i = 0; i < inputString.length(); i++) {
+            tempArray[i] = inputString.charAt(i);
+        }
+
+        Arrays.sort(tempArray, new Comparator<Character>(){
+
+            @Override
+            public int compare(Character c1, Character c2)
+            {
+                return Character.compare(Character.toLowerCase(c1),
+                        Character.toLowerCase(c2));
+            }
+        });
+
+        StringBuilder sb = new StringBuilder(tempArray.length);
+        for (Character c : tempArray)
+            sb.append(c.charValue());
+
+        return sb.toString();
+    }*/
 
     public static StringBuilder replaceAll(StringBuilder string, String pattern, String replace){
         Pattern p = Pattern.compile(pattern);
@@ -89,6 +131,21 @@ public class string {
         HashMap<Character, Integer> counter = new HashMap<>();
 
         for (char a : arr) {
+            if (counter.containsKey(a)) {
+                int oldValue = counter.get(a);
+                counter.put(a, oldValue + 1);
+            } else {
+                counter.put(a, 1);
+            }
+        }
+        return counter;
+    }
+
+    public static HashMap<Character, Integer> counter(String str)
+    {
+        HashMap<Character, Integer> counter = new HashMap<>();
+
+        for (char a : str.toCharArray()) {
             if (counter.containsKey(a)) {
                 int oldValue = counter.get(a);
                 counter.put(a, oldValue + 1);

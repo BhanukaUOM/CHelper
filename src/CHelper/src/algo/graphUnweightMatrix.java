@@ -128,7 +128,7 @@ public class graphUnweightMatrix {
             }
     }
 
-    public int MSTPrimes(){
+    public int MSTPrimesSum(){
         boolean[] visited = new boolean[n];
         visited[0] = true;
         int min, sum=0, col=0;
@@ -258,5 +258,53 @@ public class graphUnweightMatrix {
                 list.add(count);
         }
         return list;
+    }
+
+    private int minKey(int key[], Boolean mstSet[])
+    {
+        // Initialize min value
+        int min = Integer.MAX_VALUE, min_index=-1;
+
+        for (int v = 0; v < n; v++)
+            if (!mstSet[v] && key[v] < min)
+            {
+                min = key[v];
+                min_index = v;
+            }
+
+        return min_index;
+    }
+
+    public int[][] MSTPrims()
+    {
+        int parent[] = new int[n];
+        int key[] = new int [n];
+        Boolean mstSet[] = new Boolean[n];
+        for (int i = 0; i < n; i++)
+        {
+            key[i] = Integer.MAX_VALUE;
+            mstSet[i] = false;
+        }
+        key[0] = 0;
+        parent[0] = -1;
+
+        for (int count = 0; count < n-1; count++)
+        {
+            int u = minKey(key, mstSet);
+            mstSet[u] = true;
+            for (int v = 0; v < n; v++)
+                if (edges[u][v] && !mstSet[v] && (edges[u][v]?1:0) <  key[v])
+                {
+                    parent[v]  = u;
+                    key[v] = edges[u][v]?1:0;
+                }
+        }
+        int[][] mst = new int[n-1][3];
+        for (int i = 1; i < n; i++) {
+            mst[i-1][0] = parent[i];
+            mst[i-1][1] = i;
+            mst[i-1][2] = edges[i][parent[i]]?1:0;
+        }
+        return mst;
     }
 }

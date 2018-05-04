@@ -131,31 +131,6 @@ public class graphWeightMatrix {
             }
     }
 
-    public int MSTPrimes(){
-        boolean[] visited = new boolean[n];
-        visited[0] = true;
-        int min, sum=0, col=0;
-        for (int k=0; k<n; k++){
-            min = Integer.MAX_VALUE;
-            for(int j=0;j<n;j++){
-                if(visited[j]){
-                    for(int i=0; i<n; i++){
-                        if(!visited[i]){
-                            if(min>edges[j][i]){
-                                min = edges[j][i];
-                                col = i;
-                            }
-                        }
-                    }
-                }
-            }
-            visited[col] = true;
-            if(min<99999)
-                sum += min;
-        }
-        return sum;
-    }
-
     public String topologicalSorting(){
         Traversal = new StringBuilder();
         boolean[] visited = new boolean[n];
@@ -297,5 +272,63 @@ public class graphWeightMatrix {
         }
 
         return dist;
+    }
+
+    private int minKey(int key[], Boolean mstSet[])
+    {
+        // Initialize min value
+        int min = Integer.MAX_VALUE, min_index=-1;
+
+        for (int v = 0; v < n; v++)
+            if (!mstSet[v] && key[v] < min)
+            {
+                min = key[v];
+                min_index = v;
+            }
+
+        return min_index;
+    }
+
+    private void printMST(int parent[])
+    {
+        System.out.println("Edge   Weight");
+        for (int i = 1; i < n; i++)
+            System.out.println(parent[i]+" - "+ i+"    "+ edges[i][parent[i]]);
+    }
+
+    public int[][] MSTPrims(int startNode)
+    {
+        int parent[] = new int[n];
+        int key[] = new int [n];
+        Boolean mstSet[] = new Boolean[n];
+        for (int i = 0; i < n; i++)
+        {
+            key[i] = Integer.MAX_VALUE;
+            mstSet[i] = false;
+        }
+        key[startNode] = 0;
+        parent[startNode] = -1;
+
+        for (int count = 0; count < n-1; count++)
+        {
+            int u = minKey(key, mstSet);
+            mstSet[u] = true;
+            for (int v = 0; v < n; v++)
+                if (edges[u][v]!=0 && !mstSet[v] && edges[u][v] <  key[v])
+                {
+                    parent[v]  = u;
+                    key[v] = edges[u][v];
+                }
+        }
+        int[][] mst = new int[n-1][3];
+        int j=-1;
+        for (int i = 0; i < n; i++) {
+            if(i==startNode)
+                continue;
+            mst[++j][0] = parent[i];
+            mst[j][1] = i;
+            mst[j][2] = edges[i][parent[i]];
+        }
+        return mst;
     }
 }

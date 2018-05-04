@@ -2,33 +2,33 @@ package CHelper.src.algo;
 
 public class segmentTree {
     /* Tree */
-    private static int cur;
-    private static int[] arr;
-    private static int size;
+    private int cur;
+    private int[] arr;
+    private int size;
 
-    public static void treeArrayInt(int length) {
+    public void treeArrayInt(int length) {
         size = length;
         arr = new int[length];
         cur = -1;
     }
 
-    public static int getLeft(int parent) {
+    public int getLeft(int parent) {
         return arr[parent * 2 + 1];
     }
 
-    public static int getRight(int parent) {
+    public int getRight(int parent) {
         return arr[parent * 2 + 2];
     }
 
-    public static int get(int node) {
+    public int get(int node) {
         return arr[node];
     }
 
-    public static void set(int node, int Value) {
+    public void set(int node, int Value) {
         arr[node] = Value;
     }
 
-    public static int parent(int node){
+    public int parent(int node){
         if(node%2==0)
             return (node-2)/2;
         return (node-1)/2;
@@ -40,7 +40,7 @@ public class segmentTree {
         treeArrayInt(size);
     }
 
-    public static void print(){
+    public void print(){
         int j=0;
         for(int i=0; i<size; i++){
             System.out.print(arr[i]+" ");
@@ -53,7 +53,7 @@ public class segmentTree {
 
     
     /* SUM TREE */
-    public static void sumTree(int[] arr){
+    public void sumTree(int[] arr){
         // Set Last Level of Tree
         int j=0;
         for(int i=size/2; i<size/2+arr.length-1; i++) {
@@ -72,7 +72,7 @@ public class segmentTree {
         set(0, getLeft(0)+getRight(0));
     }
 
-    public static void sumTreeUpdate(int index, int value){
+    public void sumTreeUpdate(int index, int value){
         index = (size/2)+index;
         if(get(index)!=value) {
             set(index, value);
@@ -86,7 +86,7 @@ public class segmentTree {
         }
     }
 
-    private static int sumTreeGetUtil(int ss, int se, int qs, int qe, int si)
+    private int sumTreeGetUtil(int ss, int se, int qs, int qe, int si)
     {
         // If segment of this node is a part of given range, then return
         // the sum of the segment
@@ -102,12 +102,12 @@ public class segmentTree {
         return sumTreeGetUtil(ss, mid, qs, qe, 2 * si + 1) + sumTreeGetUtil(mid + 1, se, qs, qe, 2 * si + 2);
     }
 
-    public static int sumTreeGet(int StartIndex, int EndIndex){
+    public int sumTreeGet(int StartIndex, int EndIndex){
         return sumTreeGetUtil(0, size/2, StartIndex, EndIndex, 0);
     }
 
     /* MAX TREE */
-    public static void maxTree(int[] arr){
+    public void maxTree(int[] arr){
         // Set Last Level of Tree
         int j=0;
         for(int i=size/2; i<size/2+arr.length-1; i++) {
@@ -126,7 +126,7 @@ public class segmentTree {
         set(0, Math.max(getLeft(0), getRight(0)));
     }
 
-    public static void maxTreeUpdate(int index, int value){
+    public void maxTreeUpdate(int index, int value){
         index = (size/2)+index;
         if(get(index)!=value) {
             set(index, value);
@@ -140,7 +140,7 @@ public class segmentTree {
         }
     }
 
-    private static int maxTreeGetUtil(int ss, int se, int qs, int qe, int si)
+    private int maxTreeGetUtil(int ss, int se, int qs, int qe, int si)
     {
         // If segment of this node is a part of given range, then return
         // the sum of the segment
@@ -156,7 +156,7 @@ public class segmentTree {
         return Math.max(maxTreeGetUtil(ss, mid, qs, qe, 2 * si + 1), maxTreeGetUtil(mid + 1, se, qs, qe, 2 * si + 2));
     }
 
-    public static int maxTreeGet(int StartIndex, int EndIndex){
+    public int maxTreeGet(int StartIndex, int EndIndex){
         return sumTreeGetUtil(0, size/2, StartIndex, EndIndex, 0);
     }
 }

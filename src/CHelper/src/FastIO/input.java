@@ -1,6 +1,7 @@
 package FastIO;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class input
 {
@@ -142,6 +143,10 @@ public class input
             ret[i] = nextInt();
         }
         return ret;
+    }
+
+    public int[] nextIntArray(){
+        return Arrays.stream(nextStringArray()).mapToInt(Integer::parseInt).toArray();
     }
 
     public char[] nextCharArray(int size) {

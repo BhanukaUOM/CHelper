@@ -1,5 +1,7 @@
 package CHelper.src.algo;
 
+import java.math.BigInteger;
+
 public class math {
     public static int gcd(int p, int q) {
         if (q == 0)
@@ -24,10 +26,32 @@ public class math {
             pow = -pow;
         }
         long ret = pow(base,pow/2);
-        ret = ret * ret;
+        ret *= ret;
         if(pow%2!=0)
-            ret = ret * base;
+            ret *= base;
         return ret;
+    }
+
+    public static long pow2(int a, int b) {
+        long re = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                re *= a;
+            }
+            b >>= 1;
+            a *= a;
+        }
+        return re;
+    }
+
+    public static int sumOfDigits(int num){
+        int mod = num%9;
+        return mod==0?9:mod;
+    }
+
+    public static BigInteger sumOfDigits(BigInteger num){
+        BigInteger mod = num.mod(new BigInteger("9"));
+        return mod.equals(new BigInteger("0"))?new BigInteger("9"):mod;
     }
 
     public static int nextPowerOf2(int n){

@@ -20,6 +20,10 @@ public class graphUnweightMatrix {
         edges[start][end] = true;
     }
 
+    public boolean getEdge(int i, int j){
+        return edges[i][j];
+    }
+
     private StringBuilder Traversal;
     public String BFS(int startIndex){
         Traversal = new StringBuilder();

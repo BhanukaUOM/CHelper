@@ -1,16 +1,23 @@
 package CHelper.src.algo;
 
+import java.util.Arrays;
+
 public class segmentTree {
     /* Tree */
     private int cur;
     private int[] arr;
     private int size;
+    private int org;
 
     public void treeArrayInt(int length) {
         size = length;
         arr = new int[length];
         cur = -1;
     }
+
+    public int[] aray() {
+        return arr;
+}
 
     public int getLeft(int parent) {
         return arr[parent * 2 + 1];
@@ -22,6 +29,10 @@ public class segmentTree {
 
     public int get(int node) {
         return arr[node];
+    }
+
+    public int getArray(int node) {
+        return arr[size - org + node];
     }
 
     public void set(int node, int Value) {
@@ -36,7 +47,8 @@ public class segmentTree {
 
     /*SEG*/
     public segmentTree(int length){
-        size = 2*math.nextPowerOf2(length)-1;
+        org = math.nextPowerOf2(length);
+        size = 2*org-1;
         treeArrayInt(size);
     }
 
@@ -56,7 +68,7 @@ public class segmentTree {
     public void sumTree(int[] arr){
         // Set Last Level of Tree
         int j=0;
-        for(int i=size/2; i<size/2+arr.length-1; i++) {
+        for(int i=size/2; i<=size/2+arr.length-1; i++) {
             set(i, arr[j]);
             j++;
         }
@@ -110,7 +122,7 @@ public class segmentTree {
     public void maxTree(int[] arr){
         // Set Last Level of Tree
         int j=0;
-        for(int i=size/2; i<size/2+arr.length-1; i++) {
+        for(int i=size/2; i<=size/2+arr.length-1; i++) {
             set(i, arr[j]);
             j++;
         }
@@ -159,4 +171,60 @@ public class segmentTree {
     public int maxTreeGet(int StartIndex, int EndIndex){
         return sumTreeGetUtil(0, size/2, StartIndex, EndIndex, 0);
     }
+
+
+    /* XOR TREE */
+    public void xorTree(int[] arr){
+        // Set Last Level of Tree
+        int j=0;
+        for(int i=size/2; i<=size/2+arr.length-1; i++) {
+            set(i, arr[j]);
+            j++;
+        }
+        //System.out.println(Arrays.toString(this.arr));
+        //Construct Tree
+        int start = size/4;
+        while(start>=1) {
+            for (int i = start; i <= 2*start; i++) {
+                set(i, getLeft(i)^getRight(i));
+            }
+            start/=2;
+        }
+        set(0, getLeft(0)^getRight(0));
+    }
+
+    public void xorTreeUpdate(int index, int value){
+        index = (size/2)+index;
+        if(get(index)!=value) {
+            set(index, value);
+            int parent = parent(index);
+
+            while (parent > 0) {
+                set(parent, getLeft(parent) ^ getRight(parent));
+                parent = parent(parent);
+            }
+            set(0, getLeft(0) ^ getRight(0));
+        }
+    }
+
+    private int xorTreeGetUtil(int ss, int se, int qs, int qe, int si)
+    {
+        // If segment of this node is a part of given range, then return
+        // the sum of the segment
+        if (qs <= ss && qe >= se)
+            return get(si);
+
+        // If segment of this node is outside the given range
+        if (se < qs || ss > qe)
+            return 0;
+
+        // If a part of this segment overlaps with the given range
+        int mid = ss + (se - ss) / 2;
+        return xorTreeGetUtil(ss, mid, qs, qe, 2 * si + 1) ^ xorTreeGetUtil(mid + 1, se, qs, qe, 2 * si + 2);
+    }
+
+    public int xorTreeGet(int StartIndex, int EndIndex){
+        return xorTreeGetUtil(0, size/2, StartIndex, EndIndex, 0);
+    }
+
 }

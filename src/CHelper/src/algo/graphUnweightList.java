@@ -22,6 +22,10 @@ public class graphUnweightList {
         edges[start].add(end);
     }
 
+    public boolean getEdge(int i, int j){
+        return edges[i].contains(j);
+    }
+
     private StringBuilder Traversal;
     public String BFS(int startIndex) {
         Traversal = new StringBuilder();

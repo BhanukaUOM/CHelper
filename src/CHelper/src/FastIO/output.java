@@ -34,6 +34,13 @@ public class output {
         println();
     }
 
+    public void print(short[] array){
+        for (int i=0; i<array.length; i++){
+            print(array[i]+" ");
+        }
+        println();
+    }
+
     public void print(char[] array){
         for (int i=0; i<array.length; i++){
             print(array[i]+" ");
@@ -70,6 +77,16 @@ public class output {
     }
 
     public void print(int[][] array){
+        for (int i=0; i<array.length; i++){
+            for (int j=0; j<array[0].length; j++) {
+                print(array[i][j] + " ");
+            }
+            println();
+        }
+        println();
+    }
+
+    public void print(short[][] array){
         for (int i=0; i<array.length; i++){
             for (int j=0; j<array[0].length; j++) {
                 print(array[i][j] + " ");
